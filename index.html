@@ -12,15 +12,26 @@
         </script>
         <script>
     
-    let handler=()=>{
-      alert("Hi");
-      fetch("https://carapi.app/api/makes")
-      .then(resp => resp.json())
-      .then(data=> {
-        console.log(data);
-        alert("First car brand: " + data.data[0].name);
-      });
-    }
+    let handler= async ()=> {
+        try {
+            alert("Hi");
+
+            //Await the fetch call
+            const resp = await fetch("https://carapi.app/api/makes");
+
+            //Await the conversion to JSON
+            const data = await resp.json();
+
+            console.log(data);
+            alert("First car brand: " + data.data[0].name);
+
+        } catch (error) {
+            // It's good practice to handle potential network errors
+            console.error("Fetching failed:", error);
+        }
+            
+      
+    };
   
   </script>
 </head>
