@@ -11,13 +11,15 @@
                 let doIt=()=>alert("Not Implemented!");
         </script>
         <script>
-    //sample script
+    
     let handler=()=>{
       alert("Hi");
-      rates=fetch("https://open.er-api.com/v6/latest/USD");
-      rates.then(resp => resp.json())
-      .then(data=>data["rates"]["BRL"])
-      .then(rate=>alert("1 USD = "+rate+" BRL"));
+      fetch("https://carapi.app/api/makes")
+      .then(resp => resp.json())
+      .then(data=> {
+        console.log(data);
+        alert("First car brand: " + data.data[0].name);
+      });
     }
   
   </script>
